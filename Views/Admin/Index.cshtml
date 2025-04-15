@@ -1,0 +1,49 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Dashboard";
+}
+
+<h2 class="dashboard-title">Dashboard</h2>
+
+<div class="dashboard-cards row mb-4">
+    <div class="col-md-4">
+        <div class="card text-white bg-primary mb-3 shadow">
+            <div class="card-body">
+                <h5 class="card-title">Total Shops</h5>
+                <p class="card-text"><i class="fas fa-store"></i> 125</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-white bg-success mb-3 shadow">
+            <div class="card-body">
+                <h5 class="card-title">Total Fertilizers</h5>
+                <p class="card-text"><i class="fas fa-leaf"></i> 320</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-white bg-dark mb-3 shadow">
+            <div class="card-body">
+                <h5 class="card-title">Total Users</h5>
+                <p class="card-text"><i class="fas fa-users"></i> 500+</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h4 class="mb-3">Quick Actions</h4>
+<div class="d-flex flex-wrap gap-3">
+    <a asp-controller="Admin" asp-action="Shop" class="btn btn-outline-primary">
+        <i class="fas fa-store"></i> Manage Shops
+    </a>
+    <a asp-controller="Admin" asp-action="FertilizerManagement" class="btn btn-outline-success">
+        <i class="fas fa-leaf"></i> Manage Fertilizers
+    </a>
+    <a asp-controller="Admin" asp-action="AllOrders" class="btn btn-outline-secondary">
+        <i class="fas fa-box"></i> View Orders
+    </a>
+    <a asp-controller="Account" asp-action="UsersList" class="btn btn-outline-danger">
+        <i class="fas fa-users"></i> View Users
+    </a>
+</div>

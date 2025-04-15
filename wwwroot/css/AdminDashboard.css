@@ -1,0 +1,42 @@
+﻿.dashboard-title {
+    font-weight: bold;
+    font-size: 24px;
+    margin: 20px 0;
+}
+
+.dashboard-cards {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    flex: 1;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+    font-size: 16px;
+    color: gray;
+}
+
+.card-icon {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-top: 10px;
+}
+
+.quick-actions-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.quick-actions .btn {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}

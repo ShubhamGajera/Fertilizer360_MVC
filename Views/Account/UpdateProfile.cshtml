@@ -1,0 +1,83 @@
+﻿@model Fertilizer360.ViewModels.UpdateProfileViewModel
+
+@{
+    ViewData["Title"] = "Update Profile";
+
+    // Set layout dynamically based on role
+    if (User.IsInRole("Admin"))
+    {
+        Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    }
+    else if (User.IsInRole("Shop Keeper"))
+    {
+        Layout = "~/Views/Shared/_LayoutShopkeeper.cshtml";
+    }
+    else
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml"; // default user layout
+    }
+}
+
+
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card p-4 shadow-lg" style="width: 400px;">
+        <div class="text-center">
+            <img src="~/images/logo.png" alt="Logo" style="width: 100px; height: auto;">
+            <h3 class="mt-3">Update Profile</h3>
+        </div>
+        <form asp-action="UpdateProfile" method="post">
+            @Html.AntiForgeryToken() <!-- ✅ Protect against CSRF attacks -->
+
+            <input type="hidden" asp-for="Id" />
+
+            <div class="mb-3">
+                <label class="form-label">Full Name</label>
+                <input type="text" asp-for="FullName" class="form-control" required />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Email (read-only)</label>
+                <input type="email" asp-for="Email" class="form-control" readonly />
+            </div>
+
+            <div class="form-check mb-3">
+                <input type="checkbox" class="form-check-input" id="changePasswordCheckbox" asp-for="ChangePassword">
+                <label class="form-check-label" for="changePasswordCheckbox">Change Password</label>
+            </div>
+
+            <div id="passwordFields" style="display: none;">
+                <div class="mb-3">
+                    <label class="form-label">Current Password</label>
+                    <input type="password" asp-for="CurrentPassword" class="form-control" />
+                    <span asp-validation-for="CurrentPassword" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">New Password</label>
+                    <input type="password" asp-for="NewPassword" class="form-control" />
+                    <span asp-validation-for="NewPassword" class="text-danger"></span>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">Update</button>
+        </form>
+    </div>
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+@section Scripts {
+    <script>
+        document.getElementById("changePasswordCheckbox").addEventListener("change", function () {
+            document.getElementById("passwordFields").style.display = this.checked ? "block" : "none";
+        });
+    </script>
+}

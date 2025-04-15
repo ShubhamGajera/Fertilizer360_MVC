@@ -1,31 +1,188 @@
+﻿/* Global Styles */
 html {
-  font-size: 14px;
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+    html {
+        font-size: 16px;
+    }
 }
 
 body {
-  margin-bottom: 60px;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+/* Button Focus Styling */
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+/* Form Floating Placeholder Styling */
+.form-floating > .form-control-plaintext::placeholder,
+.form-floating > .form-control::placeholder {
+    color: var(--bs-secondary-color);
+    text-align: end;
 }
+
+.form-floating > .form-control-plaintext:focus::placeholder,
+.form-floating > .form-control:focus::placeholder {
+    text-align: start;
+}
+
+/* Navbar */
+.navbar {
+    padding: 10px 20px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    width: 40px;
+}
+
+.navbar-nav {
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s ease-in-out;
+}
+
+    .nav-link:hover {
+        color: #007bff;
+    }
+
+.icon {
+    font-size: 18px;
+}
+
+/* Dropdown Menu Styling */
+.dropdown-menu {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: none;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+}
+
+
+/* Footer */
+.footer {
+    background-color: #ffffff;
+    padding: 50px 20px;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    margin-top: auto;
+}
+
+    .footer h2 {
+        font-size: 24px;
+        font-weight: bold;
+        color: #111;
+    }
+
+    .footer p {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 8px;
+        line-height: 1.6;
+    }
+
+    .footer .text-primary {
+        color: #23395d;
+    }
+
+    .footer .row {
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+    }
+
+    .footer h3 {
+        font-size: 16px;
+        font-weight: bold;
+        color: #111;
+    }
+
+    .footer .input-group {
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 5px;
+        max-width: 250px;
+        margin: 0 auto;
+    }
+
+    .footer .form-control {
+        border: none;
+        outline: none;
+        padding: 5px;
+        font-size: 14px;
+    }
+
+    .footer .btn {
+        background: none;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .footer .border-top {
+        border-top: 1px solid #ddd;
+        margin-top: 30px;
+        padding-top: 20px;
+    }
+
+    .footer img {
+        width: 50px;
+    }
+
+    .footer .social-icons {
+        display: flex;
+        gap: 15px;
+    }
+
+        .footer .social-icons a {
+            text-decoration: none;
+            font-size: 18px;
+            color: #666;
+            transition: color 0.3s ease-in-out;
+        }
+
+            .footer .social-icons a:hover {
+                color: #23395d;
+            }
+

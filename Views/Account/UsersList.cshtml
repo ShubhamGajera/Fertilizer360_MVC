@@ -1,0 +1,55 @@
+﻿@model List<Fertilizer360.ViewModels.UserViewModel>
+
+@{
+    ViewData["Title"] = "Manage Users";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Manage Users</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Change Role</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.FullName</td>
+                <td>@user.Email</td>
+                <td>@user.Role</td>
+                <td>
+                    <form asp-action="ChangeUserRole" asp-controller="Account" method="post">
+                        @Html.AntiForgeryToken() <!-- ✅ Important for security -->
+
+                        <input type="hidden" name="userId" value="@user.Id" />
+
+                        <select name="newRole" class="form-control">
+                            @foreach (var role in ViewBag.Roles)
+                            {
+                                <option value="@role" selected="@(user.Role == role ? "selected" : null)">@role</option>
+                            }
+                        </select>
+
+                        <button type="submit" class="btn btn-primary mt-1">Update</button>
+                    </form>
+
+                </td>
+                <td>
+                    <a asp-action="EditUser" asp-controller="Account" asp-route-userId="@user.Id" class="btn btn-warning">Edit</a>
+                    <form asp-action="DeleteUser" asp-controller="Account" method="post" onsubmit="return confirm('Are you sure?');">
+                        <input type="hidden" name="userId" value="@user.Id" />
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

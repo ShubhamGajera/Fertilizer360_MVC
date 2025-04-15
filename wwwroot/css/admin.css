@@ -1,0 +1,22 @@
+﻿.sidebar {
+    background-color: #343a40;
+    color: white;
+}
+
+    .sidebar .nav-link {
+        padding: 10px 15px;
+        font-size: 16px;
+    }
+
+        .sidebar .nav-link:hover {
+            background-color: #495057;
+            border-radius: 5px;
+        }
+
+table {
+    width: 100%;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}

@@ -1,0 +1,89 @@
+﻿@using Fertilizer360.ViewModels;
+@model LoginViewModel;
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+}
+
+<div class="container-fluid min-vh-100 d-flex align-items-center justify-content-center bg-light">
+    <div class="row shadow-lg rounded overflow-hidden w-100" style="max-width: 1000px;">
+        <!-- Form Side -->
+        <div class="col-md-6 bg-white p-5">
+            <h2 class="text-primary fw-bold mb-2">Fertilizer360</h2>
+            <p class="text-muted mb-4">Know Before You Go: Real-Time Fertilizer Stock Alerts.</p>
+            <h4 class="fw-semibold mb-4">Login to your account</h4>
+
+            <form asp-action="Login" method="post" novalidate>
+                @if (!ViewData.ModelState.IsValid && ViewData.ModelState.ErrorCount > 0)
+                {
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+                }
+
+                <!-- Role Selection -->
+                <div class="mb-3">
+                    <label for="Role" class="form-label">Role</label>
+                    <select id="Role" name="Role" class="form-select" required>
+                        <option selected disabled value="">Select Role</option>
+                        <option value="Admin">Admin</option>
+                        <option value="Shop Keeper">Shop Keeper</option>
+                        <option value="Customer">Customer</option>
+                    </select>
+                </div>
+
+                <!-- Email -->
+                <div class="mb-3">
+                    <label asp-for="Email" class="form-label"></label>
+                    <input asp-for="Email" class="form-control" placeholder="Enter your email" />
+                </div>
+
+                <!-- Password -->
+                <div class="mb-3">
+                    <label asp-for="Password" class="form-label"></label>
+                    <input asp-for="Password" type="password" class="form-control" placeholder="Enter your password" />
+                </div>
+
+                <div class="mb-3">
+                    <a asp-action="ForgotPassword" asp-controller="Account" class="text-decoration-none">Forgot your password?</a>
+                </div>
+
+                <div class="d-grid mb-3">
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </div>
+
+                <div class="text-center text-muted">
+                    Don't have an account?
+                    <a asp-controller="Account" asp-action="Register" class="text-primary">Sign Up</a>
+                </div>
+            </form>
+        </div>
+
+        <!-- Image Side -->
+        <div class="col-md-6 d-none d-md-block p-0">
+            <img src="https://www.bhg.com/thmb/NIhXZpszfRkBe6_4hv8BDfwl7vU=/4000x0/filters:no_upscale():strip_icc()/BHG-Types-of-Garden-Fertilizer-Fb-fTYGcqqK9y1MGOlfzOh-52e52c5904ad4418ba764013ab322c90.jpg"
+                 alt="Fertilizer Products"
+                 class="img-fluid h-100 w-100 object-fit-cover" />
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+
+    <script>
+        // Hide validation on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const validationSummary = document.querySelector('[asp-validation-summary]');
+            if (validationSummary) {
+                validationSummary.style.display = 'none';
+            }
+
+            const form = document.querySelector('form');
+            form.addEventListener('submit', () => {
+                if (validationSummary) {
+                    validationSummary.style.display = 'block';
+                }
+            });
+        });
+    </script>
+}

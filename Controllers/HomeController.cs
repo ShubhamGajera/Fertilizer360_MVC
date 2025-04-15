@@ -1,4 +1,4 @@
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using Fertilizer360.Models;
 using Microsoft.AspNetCore.Mvc;
 

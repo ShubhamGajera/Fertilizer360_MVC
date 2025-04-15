@@ -17,4 +17,9 @@
 		<PackageReference Include="Myvas.AspNetCore.Email" Version="9.0.1" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Views\Admin\" />
+	  <Folder Include="Views\Shopkeeper\" />
+	</ItemGroup>
+
 </Project>

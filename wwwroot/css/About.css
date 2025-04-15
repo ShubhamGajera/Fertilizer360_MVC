@@ -1,0 +1,150 @@
+﻿/* About Page Styles */
+.about-container {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Hero Banner */
+.hero-banner {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    background-image: url('../images/fertilizer-banner.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.hero-title {
+    color: white;
+    font-size: 32px;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+/* Main About Section */
+.about-main {
+    padding: 40px 20%;
+    text-align: center;
+}
+
+    .about-main h1 {
+        font-size: 36px;
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+
+    .about-main p {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+/* Section Styles */
+.section {
+    display: flex;
+    padding: 40px 10%;
+    align-items: center;
+    position: relative;
+}
+
+.section-text {
+    flex: 1;
+    padding: 20px;
+}
+
+    .section-text h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+
+    .section-text p {
+        font-size: 15px;
+        line-height: 1.5;
+    }
+
+.section-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+    .section-image img {
+        width: 80%;
+        height: auto;
+        box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+        transform: rotate(5deg);
+    }
+
+/* Decorative Elements */
+.decorative-line {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    width: 100px;
+    height: 2px;
+    background-image: url('../images/squiggle-line.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.decorative-star {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-image: url('../images/star-decoration.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.star-right {
+    top: 40px;
+    right: -30px;
+}
+
+.star-right-bottom {
+    bottom: 40px;
+    right: -30px;
+}
+
+/* Section-specific adjustments */
+.products-section {
+    flex-direction: row-reverse;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .section {
+        flex-direction: column;
+    }
+
+    .products-section {
+        flex-direction: column;
+    }
+
+    .about-main {
+        padding: 40px 10%;
+    }
+}
+
+/* Ensure product image aligns left */
+.section-image.products-image {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}

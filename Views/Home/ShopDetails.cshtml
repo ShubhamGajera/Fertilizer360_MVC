@@ -1,0 +1,160 @@
+@model Fertilizer360.Models.Shop
+@{
+    ViewData["Title"] = Model.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var fertilizers = ViewBag.Fertilizers as List<Fertilizer360.Models.Fertilizer>;
+}
+<br />
+<br />
+<br />
+<br />
+<div class="container">
+    <div class="row d-flex align-items-stretch">
+        <!-- Left Side: Shop Image -->
+        <div class="col-md-5 d-flex align-items-center">
+            <div class="w-100">
+                <img src="@Model.Image" class="img-fluid rounded shadow" alt="@Model.Name"
+                     style="width: 100%; height: 100%; max-height: 400px; object-fit: cover;">
+            </div>
+        </div>
+        <!-- Right Side: Shop Details -->
+        <div class="col-md-7 d-flex flex-column justify-content-center">
+            <h1 class="mb-4">@Model.Name</h1>
+            <!-- Address Section -->
+            <div class="mb-3">
+                <h5><i class="fas fa-map-marker-alt mr-2" style="color: #555;"></i> Address</h5>
+                <p>@Model.Address</p>
+                <p>@Model.VillageOrTaluka, @Model.District, @Model.State, INDIA</p>
+            </div>
+            <!-- Phone Section -->
+            <div class="mb-3">
+                <h5><i class="fas fa-phone-alt mr-2" style="color: #555;"></i> Contact</h5>
+                <p>Mobile: +@Model.PhoneNumber</p>
+                <p>Hotline: +@Model.PhoneNumber</p>
+            </div>
+            <!-- Working Hours Section -->
+            <div class="mb-3">
+                <h5><i class="far fa-clock mr-2" style="color: #555;"></i> Working Hours</h5>
+                <div>
+                    @{
+                        if (!string.IsNullOrEmpty(Model.WorkTime))
+                        {
+                            var workTimes = Model.WorkTime.Split(';');
+                            foreach (var time in workTimes)
+                            {
+                                <p class="mb-1">@time.Trim()</p>
+                            }
+                        }
+                        else
+                        {
+                            <p>Monday-Friday: 9:00 - 22:00</p>
+                            <p>Saturday-Sunday: 9:00 - 21:00</p>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Description Section -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <h3>Description</h3>
+            <div class="p-3 bg-light rounded">
+                @if (!string.IsNullOrEmpty(Model.Description))
+                {
+                    <p>@Model.Description</p>
+                }
+                else
+                {
+                    <p>Welcome to @Model.Name, your one-stop shop for all your gardening needs! We offer a wide range of high-quality fertilizers including organic, synthetic, liquid and slow-release options. Our knowledgeable staff is always ready to assist you in finding the perfect fertilizer for your plants. Visit us today and let us help you achieve a greener, healthier garden!</p>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- Fertilizers Section -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <h3>Available Fertilizers</h3>
+
+            <!-- Search Bar -->
+            <div class="mb-4">
+                <form method="get" action="@Url.Action("ShopDetails", "Home")" class="d-flex">
+                    <input type="hidden" name="id" value="@Model.Id" />
+                    <input type="text" name="searchTerm" class="form-control" placeholder="Search fertilizers..." value="@ViewBag.SearchTerm">
+                    <button type="submit" class="btn btn-outline-success ml-2">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Fertilizers Grid -->
+            <div class="row">
+                @if (fertilizers != null && fertilizers.Any())
+                {
+                    foreach (var fertilizer in fertilizers)
+                    {
+                        <div class="col-md-4 mb-4">
+                            <div class="card h-100 shadow-sm">
+                                <div class="text-center p-3">
+                                    @if (!string.IsNullOrEmpty(fertilizer.Image))
+                                    {
+                                        <img src="@fertilizer.Image" class="card-img-top" alt="@fertilizer.Name" style="height: 200px; object-fit: contain;">
+                                    }
+                                    else
+                                    {
+                                        <img src="/images/default-fertilizer.png" class="card-img-top" alt="@fertilizer.Name" style="height: 200px; object-fit: contain;">
+                                    }
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title text-center">@fertilizer.Name</h5>
+                                    <p class="card-text text-center text-success font-weight-bold">₹@fertilizer.Price</p>
+                                    <p class="card-text text-center">Stock: @fertilizer.Stocks</p>
+                                </div>
+                                <div class="card-footer bg-transparent border-top-0 text-center">
+                                    <a href="@Url.Action("FertilizerDetails", "Home", new { id = fertilizer.Id })" class="btn btn-warning">View</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="col-12 text-center py-5">
+                        <p class="text-muted">No fertilizers found. Please check back later or modify your search.</p>
+                    </div>
+                }
+            </div>
+
+            <!-- Pagination can be added here if needed -->
+
+        </div>
+    </div>
+
+    <!-- Back Button -->
+    <div class="row mt-4 mb-5">
+        <div class="col-12 text-center">
+            <a href="@Url.Action("Shop", "Home")" class="btn btn-warning">
+                <i class="fas fa-arrow-left mr-2"></i> Back to Shops
+            </a>
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />

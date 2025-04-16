@@ -1,0 +1,64 @@
+@model IEnumerable<Fertilizer360.Models.Fertilizer>
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Fertilizers";
+}
+
+<h2>Fertilizer List</h2>
+
+<div class="text-right mb-3">
+    <a asp-action="AddFertilizer" class="btn btn-primary">+ Add Fertilizer</a>
+</div>
+
+@if (Model != null && Model.Any())
+{
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Shop</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Stocks</th>
+                <th>Image</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var fertilizer in Model)
+            {
+                <tr>
+                    <td>@fertilizer.Id</td>
+                    <td>@fertilizer.Shop?.Name</td>
+                    <td>@fertilizer.Name</td>
+                    <td>@fertilizer.Price</td>
+                    <td>@fertilizer.Description</td>
+                    <td>@fertilizer.Stocks</td>
+                    <td>
+                        @if (!string.IsNullOrEmpty(fertilizer.Image))
+                        {
+                            <img src="@fertilizer.Image" alt="Fertilizer Image" width="50" height="50" />
+                        }
+                        else
+                        {
+                            <span>No Image</span>
+                        }
+                    </td>
+                    <td>
+                        <a asp-action="EditFertilizer" asp-route-id="@fertilizer.Id" class="btn btn-warning">Edit</a>
+                        <form asp-action="DeleteFertilizer" method="post" style="display:inline;">
+                            <input type="hidden" name="id" value="@fertilizer.Id" />
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No fertilizers available.</p>
+}

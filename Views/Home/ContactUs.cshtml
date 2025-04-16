@@ -1,0 +1,130 @@
+@{
+    ViewData["Title"] = "Contact Us";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Banner Image with Overlay Text -->
+<div class="position-relative">
+    <div style="height: 300px; overflow: hidden;">
+        <img src="https://www.buddgroup.com/wp-content/uploads/2024/10/The-budd-group-commercial-fertilization-options.webp"
+             class="img-fluid"
+             style="width: 100%; height: 100%; object-fit: fill;"
+             alt="Contact Banner">
+    </div>
+    <div class="position-absolute" style="top: 50%; left: 50%; transform: translate(-50%, -50%);">
+        <h1 class="text-dark font-weight-bold">Contact</h1>
+    </div>
+</div>
+
+
+<div class="container my-5">
+    <div class="text-center mb-5">
+        <h2 class="font-weight-bold">Get In Touch With Us</h2>
+        <p class="text-muted">
+            For More Information About Our Products & Services, Please Feel Free To Drop Us<br />
+            An Email. Our Staff Always Be There To Help You Out. Do Not Hesitate!
+        </p>
+    </div>
+
+    <div class="row">
+        <!-- Contact Information Column -->
+        <div class="col-md-4">
+            <div class="mb-5">
+                <div class="d-flex align-items-start">
+                    <i class="fas fa-map-marker-alt mt-1 mr-3" style="font-size: 1.4rem;"></i>
+                    <div>
+                        <h5 class="font-weight-bold">Address</h5>
+                        <p class="mb-0">RK UNIVERSITY, TRAMBA</p>
+                        <p class="mb-0">360020 RAJKOT</p>
+                        <p class="mb-0">INDIA</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-5">
+                <div class="d-flex align-items-start">
+                    <i class="fas fa-phone-alt mt-1 mr-3" style="font-size: 1.4rem;"></i>
+                    <div>
+                        <h5 class="font-weight-bold">Phone</h5>
+                        <p class="mb-0">Mobile: +91 9265965449</p>
+                        <p class="mb-0">Hotline: +91 9265965449</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-5">
+                <div class="d-flex align-items-start">
+                    <i class="far fa-clock mt-1 mr-3" style="font-size: 1.4rem;"></i>
+                    <div>
+                        <h5 class="font-weight-bold">Working Time</h5>
+                        <p class="mb-0">Monday-Friday: 9:00 - 21:00</p>
+                        <p class="mb-0">Saturday-Sunday: 9:00 - 21:00</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Location Map -->
+            <div class="mb-4">
+                <h5 class="fw-bold mb-2">Location Map</h5>
+                <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=70.901559%2C22.242577%2C70.901742%2C22.242698&amp;layer=mapnik"
+                        width="100%"
+                        height="250"
+                        style="border:1px solid #ccc; border-radius: 8px;"
+                        allowfullscreen
+                        loading="lazy">
+                </iframe>
+                <a href="https://www.openstreetmap.org/?mlat=22.242638&amp;mlon=70.90165#map=18/22.24264/70.90165" target="_blank" class="d-block mt-2">
+                    View Larger Map
+                </a>
+            </div>
+        </div>
+
+
+        <!-- Contact Form Column -->
+        <div class="col-md-8">
+            <form id="contactForm" method="post" action="@Url.Action("SubmitContactForm", "Home")">
+                <div class="form-group">
+                    <label for="name">Your name</label>
+                    <input type="text" class="form-control" id="name" name="Name" placeholder="Abc" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" class="form-control" id="email" name="Email" placeholder="Abc@def.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" class="form-control" id="subject" name="Subject" placeholder="This is an optional">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea class="form-control" id="message" name="Message" rows="5" placeholder="Hi! I'd like to ask about" required></textarea>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-warning px-5">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+

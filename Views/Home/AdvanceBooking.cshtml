@@ -1,0 +1,109 @@
+@model Fertilizer360.Models.OrderViewModel
+@{
+    ViewData["Title"] = "Advance Booking";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h3 class="card-title mb-4">Order Summary</h3>
+
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <h5>Product</h5>
+                        </div>
+                        <div class="col-6 text-right">
+                            <h5>Subtotal</h5>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 pb-2 border-bottom">
+                        <div class="col-6">
+                            <p>@Model.FertilizerName <span class="text-muted">x @Model.Quantity</span></p>
+                        </div>
+                        <div class="col-6 text-right">
+                            <p>Rs. @Model.Price.ToString("0.00")</p>
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <div class="col-6">
+                            <p>Subtotal</p>
+                        </div>
+                        <div class="col-6 text-right">
+                            <p>Rs. @Model.Subtotal.ToString("0.00")</p>
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-6">
+                            <p class="font-weight-bold">Total</p>
+                        </div>
+                        <div class="col-6 text-right">
+                            <p class="font-weight-bold text-warning">Rs. @Model.Subtotal.ToString("0.00")</p>
+                        </div>
+                    </div>
+
+                    <hr class="my-4">
+
+                    <div class="text-center mt-4">
+                        <button type="button" id="payBtn" class="btn btn-outline-warning px-5 py-2">Advance Book</button>
+                    </div>
+
+                    <form id="completeBookingForm" method="post" action="@Url.Action("CompleteBooking", "Home")">
+                        <input type="hidden" name="FertilizerId" value="@Model.FertilizerId" />
+                        <input type="hidden" name="Quantity" value="@Model.Quantity" />
+                        <input type="hidden" name="Subtotal" value="@Model.Subtotal" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        document.getElementById("payBtn").onclick = function (e) {
+            var options = {
+                "key": "rzp_test_jQOReseIWUxIfd", // 🔁 Replace with your Razorpay Test Key
+                "amount": @((Model.Subtotal * 100).ToString("0")), // in paise
+                "currency": "INR",
+                "name": "Fertilizer360",
+                "description": "Advance Booking Payment",
+                "handler": function (response) {
+                    // ✅ On successful payment, submit form to complete booking
+                    document.getElementById("completeBookingForm").submit();
+                },
+                "theme": {
+                    "color": "#ff9800"
+                }
+            };
+
+            var rzp1 = new Razorpay(options);
+            rzp1.open();
+            e.preventDefault();
+        }
+    </script>
+}
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />

@@ -1,0 +1,51 @@
+@model Fertilizer360.Models.Order
+
+@{
+    ViewData["Title"] = "Edit Order";
+    Layout = "~/Views/Shared/_LayoutShopkeeper.cshtml";
+}
+
+<div class="container mt-4">
+    <h3>Edit Order</h3>
+    <form asp-action="EditOrder" method="post">
+        <input type="hidden" asp-for="Id" />
+
+        <div class="form-group">
+            <label>User Name</label>
+            <input asp-for="UserName" class="form-control" required />
+        </div>
+
+        <div class="form-group">
+            <label>Fertilizer</label>
+            <select asp-for="FertilizerId" class="form-control" asp-items="ViewBag.Fertilizers" required></select>
+        </div>
+
+        <div class="form-group">
+            <label>Shop</label>
+            <select asp-for="ShopId" class="form-control" asp-items="ViewBag.Shops" required></select>
+        </div>
+
+
+        <div class="form-group">
+            <label>Quantity</label>
+            <input asp-for="Quantity" class="form-control" required />
+        </div>
+
+        <div class="form-group">
+            <label>Price</label>
+            <input asp-for="Price" class="form-control" required />
+        </div>
+
+        <div class="form-group">
+            <label>Subtotal</label>
+            <input asp-for="Subtotal" class="form-control" required />
+        </div>
+
+        <div class="form-group">
+            <label>Order Date</label>
+            <input asp-for="OrderDate" class="form-control" type="date" required />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+</div>

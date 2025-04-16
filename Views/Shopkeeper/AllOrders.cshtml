@@ -1,0 +1,44 @@
+@model List<Fertilizer360.Models.Order>
+
+@{
+    ViewData["Title"] = "All Orders";
+    Layout = "~/Views/Shared/_LayoutShopkeeper.cshtml";
+}
+
+<div class="container mt-4">
+    <h3>All Orders</h3>
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>#</th>
+                <th>User</th>
+                <th>Fertilizer</th>
+                <th>Shop</th>
+                <th>Qty</th>
+                <th>Price</th>
+                <th>Subtotal</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model)
+            {
+                <tr>
+                    <td>@order.Id</td>
+                    <td>@order.UserName</td>
+                    <td>@order.Fertilizer?.Name</td>
+                    <td>@order.Shop?.Name</td>
+                    <td>@order.Quantity</td>
+                    <td>Rs. @order.Price</td>
+                    <td>Rs. @order.Subtotal</td>
+                    <td>@order.OrderDate.ToString("dd MMM yyyy")</td>
+                    <td>
+                        <a href="@Url.Action("EditOrder", "Shopkeeper", new { id = order.Id })" class="btn btn-primary btn-sm">Edit</a>
+                        <a href="@Url.Action("DeleteOrder", "Shopkeeper", new { id = order.Id })" onclick="return confirm('Are you sure?')" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

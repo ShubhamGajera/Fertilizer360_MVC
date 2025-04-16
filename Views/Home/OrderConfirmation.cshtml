@@ -1,0 +1,57 @@
+@model Fertilizer360.Models.Order
+@{
+    ViewData["Title"] = "Order Confirmation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-sm p-4">
+        <h2 class="text-success mb-4">✅ Order Confirmed!</h2>
+
+        @if (Model == null)
+        {
+            <p class="text-danger">Sorry, the order details are unavailable.</p>
+        }
+        else
+        {
+            <p>Thank you for your booking, <strong>@Model.UserName</strong>.</p>
+
+            <h4 class="mt-4">🧾 Order Details</h4>
+            <hr />
+            <p><strong>Fertilizer:</strong> @Model.Fertilizer?.Name ?? "N/A"</p>
+            <p><strong>Quantity:</strong> @Model.Quantity</p>
+            <p><strong>Price:</strong> Rs. @Model.Fertilizer?.Price.ToString("0.00") ?? "0.00"</p>
+            <p><strong>Total:</strong> Rs. @Model.Subtotal.ToString("0.00")</p>
+            <p><strong>Date:</strong> @Model.OrderDate.ToString("dd MMM yyyy hh:mm tt")</p>
+
+            <div class="mt-4">
+                <a href="@Url.Action("Index", "Home")" class="btn btn-primary">🏠 Back to Home</a>
+            </div>
+        }
+    </div>
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+@if (Model != null)
+{
+    <script>
+        setTimeout(function () {
+            window.location.href = '@Url.Action("Index", "Home")';
+        }, 20000); // Redirect after 5 seconds
+    </script>
+}

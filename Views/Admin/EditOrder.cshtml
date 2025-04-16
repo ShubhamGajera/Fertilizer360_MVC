@@ -1,0 +1,40 @@
+@model Fertilizer360.Models.Order
+
+@{
+    ViewData["Title"] = "Edit Order";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container mt-4">
+    <h3>Edit Order</h3>
+    <form asp-action="EditOrder" method="post">
+        <input type="hidden" asp-for="Id" />
+
+        <div class="form-group">
+            <label>User Name</label>
+            <input asp-for="UserName" class="form-control" disabled />
+        </div>
+
+        <div class="form-group">
+            <label>Fertilizer</label>
+            <select asp-for="FertilizerId" class="form-control" asp-items="ViewBag.Fertilizers" disabled></select>
+        </div>
+
+        <div class="form-group">
+            <label>Shop</label>
+            <select asp-for="ShopId" class="form-control" asp-items="ViewBag.Shops" disabled></select>
+        </div>
+
+        <div class="form-group">
+            <label>Quantity</label>
+            <input name="Quantity" value="@Model.Quantity" class="form-control" required />
+        </div>
+
+        <div class="form-group">
+            <label>Order Date</label>
+            <input asp-for="OrderDate" class="form-control" type="date" disabled />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+</div>

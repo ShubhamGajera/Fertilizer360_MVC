@@ -1,0 +1,41 @@
+@model Fertilizer360.Models.Fertilizer
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Edit Fertilizer";
+}
+
+<h2>Edit Fertilizer</h2>
+
+<form asp-action="EditFertilizer" method="post" enctype="multipart/form-data">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label>Shop</label>
+        <select asp-for="ShopId" class="form-control" asp-items="@(new SelectList(ViewBag.Shops, "Id", "Name"))"></select>
+    </div>
+    <div class="form-group">
+        <label>Name</label>
+        <input asp-for="Name" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label>Price</label>
+        <input asp-for="Price" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label>Description</label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+    </div>
+    <div class="form-group">
+        <label>Stocks</label>
+        <input asp-for="Stocks" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label>Image</label>
+        <input type="file" name="ImageFile" class="form-control" />
+        @if (!string.IsNullOrEmpty(Model.Image))
+        {
+            <img src="@Model.Image" alt="Current Image" width="100" height="100" />
+        }
+    </div>
+    <button type="submit" class="btn btn-success">Update</button>
+</form>

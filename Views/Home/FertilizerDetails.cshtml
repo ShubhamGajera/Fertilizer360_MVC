@@ -1,0 +1,111 @@
+@model Fertilizer360.Models.Fertilizer
+@{
+    ViewData["Title"] = Model.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+<br />
+<br />
+<div class="container">
+    <div class="row">
+        <!-- Left Side: Fertilizer Image -->
+        <div class="col-md-6 mb-4">
+            <div class="text-center">
+                @if (!string.IsNullOrEmpty(Model.Image))
+                {
+                    <img src="@Model.Image" class="img-fluid rounded" alt="@Model.Name" style="max-height: 500px; object-fit: contain;">
+                }
+                else
+                {
+                    <img src="/images/default-fertilizer.png" class="img-fluid rounded" alt="@Model.Name" style="max-height: 500px; object-fit: contain;">
+                }
+            </div>
+        </div>
+
+        <!-- Right Side: Fertilizer Details -->
+        <div class="col-md-6">
+            <h1 class="mb-3">@Model.Name</h1>
+            <h3 class="text-secondary mb-4">Rs. @Model.Price.ToString("0.00")</h3>
+
+            <div class="mb-4">
+                @if (!string.IsNullOrEmpty(Model.Description))
+                {
+                    <p>@Model.Description</p>
+                }
+                else
+                {
+                    <p>This premium quality fertilizer helps promote healthy plant growth and abundant harvests. It contains essential nutrients that plants need for optimal development.</p>
+                }
+            </div>
+
+            <!-- Stock Information -->
+            <div class="d-flex align-items-center mb-4">
+                <div class="mr-2">Stocks</div>
+                <div class="mx-2">-</div>
+                <div>@Model.Stocks</div>
+            </div>
+
+            <!-- Quantity Selector -->
+            <form id="orderForm" method="post" action="@Url.Action("AdvanceBooking", "Home")">
+                <input type="hidden" name="FertilizerId" value="@Model.Id" />
+                <input type="hidden" name="FertilizerName" value="@Model.Name" />
+                <input type="hidden" name="Price" value="@Model.Price" />
+
+                <div class="d-flex align-items-center mb-4">
+                    <button type="button" class="btn btn-outline-secondary quantity-btn" onclick="decrementQuantity()">-</button>
+                    <input type="number" id="quantity" name="Quantity" value="1" min="1" max="@Model.Stocks" class="form-control mx-3 text-center" style="width: 60px;">
+                    <button type="button" class="btn btn-outline-secondary quantity-btn" onclick="incrementQuantity()">+</button>
+                </div>
+
+                <!-- Advance Booking Button -->
+                <button type="submit" class="btn btn-outline-dark px-5 py-2 mt-3">Advance Booking</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function decrementQuantity() {
+        var input = document.getElementById('quantity');
+        var value = parseInt(input.value);
+        if (value > 1) {
+            input.value = value - 1;
+        }
+    }
+
+    function incrementQuantity() {
+        var input = document.getElementById('quantity');
+        var value = parseInt(input.value);
+        var max = parseInt(input.getAttribute('max'));
+        if (value < max) {
+            input.value = value + 1;
+        }
+    }
+</script>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />

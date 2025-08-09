@@ -1,5 +1,5 @@
 
-# 🌱 Fertilizer360 – Smart Fertilizer Booking System
+# 🌱 Fertilizer360  –  Smart Fertilizer Booking System
 
 ![Made with ASP.NET Core](https://img.shields.io/badge/Made%20with-ASP.NET%20Core-blue?logo=dotnet)
 ![Responsive UI](https://img.shields.io/badge/Design-Figma-purple?logo=figma)

@@ -22,7 +22,7 @@
 
 ---
 
-## 🎨 UI/UX Design (Figma)
+## 🎨  UI/UX Design (Figma)
 
 The UI of Fertilizer360 is carefully designed in Figma for a seamless and intuitive user experience.
 
